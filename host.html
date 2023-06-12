@@ -1,0 +1,142 @@
+<html>
+<head>
+    <title>Host</title>
+	
+	<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+	
+	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="module" src="JS/functions.js"></script>
+	<script type="module" src="JS/firebase.js"></script>		
+	<script type="module" src="JS/sound_fb.js"></script>
+	<script type="module" src="JS/player_fb.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="CSS/reset.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site_player.css">
+	
+    <meta charset="utf-8" />
+</head>
+<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<div class='question'>
+		<div class='ques_lozenge'>
+			<table id='q_text'>
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		<div class='ans_lozenge' id='ans_lozenge_a'>
+			<img class='ans_final' id='ans_final_a' src='Images/answer_a_final.png' />
+			<img class='ans_correct' id='ans_correct_a' src='Images/answer_a_correct.png' />
+			<img class='ans_diagonal' id='ans_diagonal_a' src='Images/diagonal.png' />
+			<p class='ans_letter' id='ans_letter_a'>A:</p>
+			<p class='ans_text' id='ans_text_a'></p>
+		</div>
+		<div class='ans_lozenge' id='ans_lozenge_b'>
+			<img class='ans_final' id='ans_final_b' src='Images/answer_b_final.png' />
+			<img class='ans_correct' id='ans_correct_b' src='Images/answer_b_correct.png' />
+			<img class='ans_diagonal' id='ans_diagonal_b' src='Images/diagonal.png' />
+			<p class='ans_letter' id='ans_letter_b'>B:</p>
+			<p class='ans_text' id='ans_text_b'></p>
+		</div>
+		<div class='ans_lozenge' id='ans_lozenge_c'>
+			<img class='ans_final' id='ans_final_c' src='Images/answer_c_final.png' />
+			<img class='ans_correct' id='ans_correct_c' src='Images/answer_c_correct.png' />
+			<img class='ans_diagonal' id='ans_diagonal_c' src='Images/diagonal.png' />
+			<p class='ans_letter' id='ans_letter_c'>C:</p>
+			<p class='ans_text' id='ans_text_c'></p>
+		</div>
+		<div class='ans_lozenge' id='ans_lozenge_d'>
+			<img class='ans_final' id='ans_final_d' src='Images/answer_d_final.png' />
+			<img class='ans_correct' id='ans_correct_d' src='Images/answer_d_correct.png' />
+			<img class='ans_diagonal' id='ans_diagonal_d' src='Images/diagonal.png' />
+			<p class='ans_letter' id='ans_letter_d'>D:</p>
+			<p class='ans_text' id='ans_text_d'></p>
+		</div>
+	</div>
+	<div class='other_info'>
+		<div id='fff_host'>
+			<div id='fff_correct_order'>
+				<p id='fff_correct_text'>Correct Order: </p>
+				<p id='fff_correct_ans'></p>
+			</div>
+			<table id='contestants_result'>
+				<tr>
+					<td id='cn1'></td>
+					<td id='ca1'></td>
+					<td id='ct1'></td>
+				</tr>
+				<tr>
+					<td id='cn2'></td>
+					<td id='ca2'></td>
+					<td id='ct2'></td>
+				</tr>
+				<tr>
+					<td id='cn3'></td>
+					<td id='ca3'></td>
+					<td id='ct3'></td>
+				</tr>
+				<tr>
+					<td id='cn4'></td>
+					<td id='ca4'></td>
+					<td id='ct4'></td>
+				</tr>
+				<tr>
+					<td id='cn5'></td>
+					<td id='ca5'></td>
+					<td id='ct5'></td>
+				</tr>
+				<tr>
+					<td id='cn6'></td>
+					<td id='ca6'></td>
+					<td id='ct6'></td>
+				</tr>
+			</table>
+			<div id='fff_cont_info'>
+				<p id='fff_cont_info_text'></p>
+			</div>
+		</div>
+		<div id='main_host'>
+			<div id='moneytree'>
+				<div id='mt_lifeline_holder'>
+					<div class='mt_lifeline' id='mt_lifeline_1'>
+						<img id='mtl_icon' src="Images/5050.png"/>
+						<img id='mtl_cross' src="Images/cross.png"/>
+					</div>
+					<div class='mt_lifeline' id='mt_lifeline_2'>
+						<img id='mtl_icon' src="Images/ate.png"/>
+						<img id='mtl_cross' src="Images/cross.png"/>
+					</div>
+					<div class='mt_lifeline' id='mt_lifeline_3'>
+						<img id='mtl_icon' src="Images/ath.png"/>
+						<img id='mtl_cross' src="Images/cross.png"/>
+					</div>
+				</div>
+				
+				<div id='mt_table_holder'>
+					<table id='moneytree_table'>
+					
+					</table>
+				</div>
+			</div>
+			<div class='main_run_info' id='mri1'>Away:</div>
+			<div class='main_run_info' id='mri2'>Have:</div>
+			<div class='main_run_info' id='mri3'>Correct:</div>
+			<div class='main_run_info' id='mri4'>Next:</div>
+			<div class='main_run_info' id='mri5'></div>
+			<div class='main_run_info' id='mri6'></div>
+			<div id='q_note'>
+				<p id='q_note_text'></p>
+			</div>
+		</div>
+	</div>
+	<script>
+		var number_of_player = 7;
+		var fff_answer_counter = 0;
+		var fff_answer = '';
+		
+		var lock_fff_keyboard = true;
+	</script>
+</body>
+</html>

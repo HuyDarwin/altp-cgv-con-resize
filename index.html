@@ -1,0 +1,165 @@
+<html>
+<head>
+    <title>Index</title>
+	
+	<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+	
+	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="module" src="JS/functions.js"></script>
+	<script type="module" src="JS/firebase.js"></script>		
+	<script type="module" src="JS/sound_fb.js"></script>
+	<script type="module" src="JS/index_fb.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="CSS/reset.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site.css">
+	
+    <meta charset="utf-8" />
+</head>
+<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<div class='question'>
+		<div class='ques_lozenge'>
+			<table id='q_text'>
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		<div class='ans_lozenge' id='ans_lozenge_a'>
+			<img class='ans_final' id='ans_final_a' src='Images/answer_a_final.png' />
+			<img class='ans_correct' id='ans_correct_a' src='Images/answer_a_correct.png' />
+			<img class='ans_diagonal' id='ans_diagonal_a' src='Images/diagonal.png' />
+			<p class='ans_letter' id='ans_letter_a'>A:</p>
+			<p class='ans_text' id='ans_text_a'></p>
+		</div>
+		<div class='ans_lozenge' id='ans_lozenge_b'>
+			<img class='ans_final' id='ans_final_b' src='Images/answer_b_final.png' />
+			<img class='ans_correct' id='ans_correct_b' src='Images/answer_b_correct.png' />
+			<img class='ans_diagonal' id='ans_diagonal_b' src='Images/diagonal.png' />
+			<p class='ans_letter' id='ans_letter_b'>B:</p>
+			<p class='ans_text' id='ans_text_b'></p>
+		</div>
+		<div class='ans_lozenge' id='ans_lozenge_c'>
+			<img class='ans_final' id='ans_final_c' src='Images/answer_c_final.png' />
+			<img class='ans_correct' id='ans_correct_c' src='Images/answer_c_correct.png' />
+			<img class='ans_diagonal' id='ans_diagonal_c' src='Images/diagonal.png' />
+			<p class='ans_letter' id='ans_letter_c'>C:</p>
+			<p class='ans_text' id='ans_text_c'></p>
+		</div>
+		<div class='ans_lozenge' id='ans_lozenge_d'>
+			<img class='ans_final' id='ans_final_d' src='Images/answer_d_final.png' />
+			<img class='ans_correct' id='ans_correct_d' src='Images/answer_d_correct.png' />
+			<img class='ans_diagonal' id='ans_diagonal_d' src='Images/diagonal.png' />
+			<p class='ans_letter' id='ans_letter_d'>D:</p>
+			<p class='ans_text' id='ans_text_d'></p>
+		</div>
+	</div>
+	<div class='money_strap'>
+		<p id='winnings'></p>
+	</div>
+	<div class='fff_order'>
+		<video id='fff_order_bg' muted autoplay loop>
+			<source src="Images/moving_background.mp4" type="video/mp4">
+		</video>
+		<img id='fff_order_seperator' src='Images/tree_seperator.png' />
+		<table id='fff_order_q_text'>
+			<tr>
+				<td></td>
+			</tr>
+		</table>
+		<div class='fff_order_answer' id='fff_order_answer_1' >
+			<p class='fff_ans_letter' id='fff_ans_letter_1'></p>
+			<p class='fff_ans_text' id='fff_ans_text_1'></p>
+		</div>
+		<div class='fff_order_answer' id='fff_order_answer_2' >
+			<p class='fff_ans_letter' id='fff_ans_letter_2'></p>
+			<p class='fff_ans_text' id='fff_ans_text_2'></p>
+		</div>
+		<div class='fff_order_answer' id='fff_order_answer_3' >
+			<p class='fff_ans_letter' id='fff_ans_letter_3'></p>
+			<p class='fff_ans_text' id='fff_ans_text_3'></p>
+		</div>
+		<div class='fff_order_answer' id='fff_order_answer_4' >
+			<p class='fff_ans_letter' id='fff_ans_letter_4'></p>
+			<p class='fff_ans_text' id='fff_ans_text_4'></p>
+		</div>
+	</div>
+	<div class='fff_result'>
+		<video id='fff_result_bg' muted autoplay loop>
+			<source src="Images/moving_background.mp4" type="video/mp4">
+		</video>
+		<div class='fff_result_lozenge' id='fff_result_lozenge_1'>
+			<img class='fff_result_lozenge_correct' id='fff_result_lozenge_correct_1' src='Images/fff_order_times_correct.png' />
+			<p class='fff_result_name' id='fff_result_name_1'></p>
+			<p class='fff_result_times' id='fff_result_times_1'></p>
+		</div>
+		<div class='fff_result_lozenge' id='fff_result_lozenge_2'>
+			<img class='fff_result_lozenge_correct' id='fff_result_lozenge_correct_2' src='Images/fff_order_times_correct.png' />
+			<p class='fff_result_name' id='fff_result_name_2'></p>
+			<p class='fff_result_times' id='fff_result_times_2'></p>
+		</div>
+		<div class='fff_result_lozenge' id='fff_result_lozenge_3'>
+			<img class='fff_result_lozenge_correct' id='fff_result_lozenge_correct_3' src='Images/fff_order_times_correct.png' />
+			<p class='fff_result_name' id='fff_result_name_3'></p>
+			<p class='fff_result_times' id='fff_result_times_3'></p>
+		</div>
+		<div class='fff_result_lozenge' id='fff_result_lozenge_4'>
+			<img class='fff_result_lozenge_correct' id='fff_result_lozenge_correct_4' src='Images/fff_order_times_correct.png' />
+			<p class='fff_result_name' id='fff_result_name_4'></p>
+			<p class='fff_result_times' id='fff_result_times_4'></p>
+		</div>
+		<div class='fff_result_lozenge' id='fff_result_lozenge_5'>
+			<img class='fff_result_lozenge_correct' id='fff_result_lozenge_correct_5' src='Images/fff_order_times_correct.png' />
+			<p class='fff_result_name' id='fff_result_name_5'></p>
+			<p class='fff_result_times' id='fff_result_times_5'></p>
+		</div>
+		<div class='fff_result_lozenge' id='fff_result_lozenge_6'>
+			<img class='fff_result_lozenge_correct' id='fff_result_lozenge_correct_6' src='Images/fff_order_times_correct.png' />
+			<p class='fff_result_name' id='fff_result_name_6'></p>
+			<p class='fff_result_times' id='fff_result_times_6'></p>
+		</div>
+	</div>
+	<div class='moneytree'>
+		<video id='moneytree_bg' muted autoplay loop>
+			<source src="Images/moving_background.mp4" type="video/mp4">
+		</video>
+		
+		<div class='mt_lifeline' id='mt_lifeline_1'>
+			<img id='mtl_icon' src="Images/5050.png"/>
+			<img id='mtl_cross' src="Images/cross.png"/>
+		</div>
+		<div class='mt_lifeline' id='mt_lifeline_2'>
+			<img id='mtl_icon' src="Images/ate.png"/>
+			<img id='mtl_cross' src="Images/cross.png"/>
+		</div>
+		<div class='mt_lifeline' id='mt_lifeline_3'>
+			<img id='mtl_icon' src="Images/ath.png"/>
+			<img id='mtl_cross' src="Images/cross.png"/>
+		</div>
+		
+		<div id='tree_follower'>
+		</div>
+		
+		<table id='moneytree_table'>
+		
+		</table>
+		
+		<img id='tree_sparkle' src='Images/tree_sparkle.png' />
+		<img id='tree_seperator' src='Images/tree_seperator.png' />
+	</div>
+	<div class='contestant_strap'>
+		<p id='cont_strap_name'></p>
+		<p id='cont_strap_hometown'></p>
+	</div>
+	<script>
+		var at = '';
+		var at2 = '';
+		var at3 = '';
+		var at4 = '';
+		var at5 = '';
+		
+		var winner = '';
+	</script>
+</body>
+</html>

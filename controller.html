@@ -1,0 +1,322 @@
+<html>
+<head>
+    <title>Controller</title>
+	
+	<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+	
+	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+	<script type="text/javascript" src="JS/jquery-3.3.1.min.js"></script>
+	<script type="module" src="JS/functions.js"></script>
+	<script type="module" src="JS/firebase.js"></script>	
+	<script type="module" src="JS/controller_fb.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="CSS/reset.css">
+	<link rel="stylesheet" type="text/css" href="CSS/site_controller.css">
+	
+    <meta charset="utf-8" />
+</head>
+<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<div class='sound'>
+		<p class='title'>Sounds</p>
+		<button class='autoname' id='titles'>Titles</button>
+		<button class='autoname' id='he'>Host Ent.</button>
+		<button class='autoname' id='commin'>Comm. In</button>
+		<button class='autoname' id='commout'>Comm. Out</button>
+		<button class='autoname' id='ambience'>Ambience</button>
+		<button class='autoname' id='credits'>Credits</button>
+		<button class='autoname' id='stopsounds'>Stop All Sounds</button>
+	</div>
+	<div class='preview'>
+		<p class='title'>Preview</p>
+		<iframe src='http://localhost/altp_cg/index.html' style='background-color: black;' frameborder='0' id='index_iframe'></iframe>
+
+	</div>
+	<div class='other'>
+		<p class='title'>Other</p>
+		<button class='autoname' id='reload'>Reload</button>
+		<button class='autoname' id='load_qs'>Load Questions File</button>
+		<input type='file' id='getfileqs' style="display:none" accept=".xls,.xlsx,.ods"></input>
+		<button class='autoname' id='load_ps'>Load Contestants File</button>
+		<input type='file' id='getfileps' style="display:none" accept=".xls,.xlsx,.ods"></input>
+	</div>
+	
+	<div class='main'>
+		<p class='title'>Main</p>
+		<button class='autoname' id='fff_mode'>Fastest Finger First</button>
+		<button class='autoname' id='main_mode'>Main Game</button>
+		<div id='main_frame'>
+			<div id='question_preview'>
+				<table id='q_text'>
+					<tr>
+						<td></td>
+					</tr>
+				</table>
+				<div class='ans_holder' id='ans_hold_a'>
+					<p class='ans_letter' id='ans_letter_a'>A:</p>
+					<p class='ans_text' id='ans_text_a'></p>
+				</div>
+				<div class='ans_holder' id='ans_hold_b'>
+					<p class='ans_letter' id='ans_letter_b'>B:</p>
+					<p class='ans_text' id='ans_text_b'></p>
+				</div>
+				<div class='ans_holder' id='ans_hold_c'>
+					<p class='ans_letter' id='ans_letter_c'>C:</p>
+					<p class='ans_text' id='ans_text_c'></p>
+				</div>
+				<div class='ans_holder' id='ans_hold_d'>
+					<p class='ans_letter' id='ans_letter_d'>D:</p>
+					<p class='ans_text' id='ans_text_d'></p>
+				</div>
+				<textarea id='question_notes' disabled></textarea>
+				<p id='info'></p>
+			</div>
+			<div id='fff_mode_frame'>
+				<select id="fff_qs_select" size="15">
+				
+				</select>
+				<button id='fff_qs_submit'>Use the Question</button>
+				
+				<button class='autoname' id='fff_obj1'>Introduce the Contestants</button>
+				<button class='autoname' id='fff_obj2' disabled>Next Contestant</button>
+				<button class='autoname' id='fff_obj3' disabled>Hide Contestants Strap</button>
+				<button class='autoname' id='fff_obj4'>Explain the Rules</button>
+				<button class='autoname' id='fff_obj5' disabled>Stop Explaining</button>
+				<button class='autoname' id='fff_obj6'>Reveal Question</button>
+				<button class='autoname' id='fff_obj7' disabled>Start</button>
+				<button class='autoname' id='fff_obj8' disabled>Hide Question</button>
+				<button class='autoname' id='fff_obj9' disabled>Right Order</button>
+				<button class='autoname' id='fff_obj10' disabled>1</button>
+				<button class='autoname' id='fff_obj11' disabled>2</button>
+				<button class='autoname' id='fff_obj12' disabled>3</button>
+				<button class='autoname' id='fff_obj13' disabled>4</button>
+				<button class='autoname' id='fff_obj14' disabled>Reveal Results Gpx</button>
+				<button class='autoname' id='fff_obj15' disabled>Reveal Results</button>
+				<button class='autoname' id='fff_obj16' disabled>Annouce the Fastest</button>
+				<button class='autoname' id='fff_obj17' disabled>Reveal Fastest Gpx</button>
+				<button class='autoname' id='fff_obj18' disabled>Hide Fastest Gpx</button>
+				
+				<div id='cont_result_holder'>
+					<table id='contestants_result'>
+						<tr>
+							<td id='cn1'></td>
+							<td id='ca1'></td>
+							<td id='ct1'></td>
+						</tr>
+						<tr>
+							<td id='cn2'></td>
+							<td id='ca2'></td>
+							<td id='ct2'></td>
+						</tr>
+						<tr>
+							<td id='cn3'></td>
+							<td id='ca3'></td>
+							<td id='ct3'></td>
+						</tr>
+						<tr>
+							<td id='cn4'></td>
+							<td id='ca4'></td>
+							<td id='ct4'></td>
+						</tr>
+						<tr>
+							<td id='cn5'></td>
+							<td id='ca5'></td>
+							<td id='ct5'></td>
+						</tr>
+						<tr>
+							<td id='cn6'></td>
+							<td id='ca6'></td>
+							<td id='ct6'></td>
+						</tr>
+					</table>
+					
+					<button id='fce1' disabled>✓</button>
+					<button id='fce2' disabled>✓</button>
+					<button id='fce3' disabled>✓</button>
+					<button id='fce4' disabled>✓</button>
+					<button id='fce5' disabled>✓</button>
+					<button id='fce6' disabled>✓</button>
+					<button id='fcd1'>✗</button>
+					<button id='fcd2'>✗</button>
+					<button id='fcd3'>✗</button>
+					<button id='fcd4'>✗</button>
+					<button id='fcd5'>✗</button>
+					<button id='fcd6'>✗</button>
+				</div>
+			</div>
+			<div id='main_mode_frame'>
+				<select id="main_qs_select" size="15">
+				
+				</select>
+				<button id='main_qs_submit'>Use the Question</button>
+
+				<button class='autoname' id='main_obj1'>Welcome the Contestant</button>
+				<button class='autoname' id='main_obj2'>Explain the Rules</button>
+				<button class='autoname' id='main_obj3' disabled>1</button>
+				<button class='autoname' id='main_obj4' disabled>2</button>
+				<button class='autoname' id='main_obj5' disabled>3</button>
+				<button class='autoname' id='main_obj6' disabled>Stop Explaining</button>
+				<button class='autoname' id='main_obj7' disabled>Lights Down</button>
+				<button class='autoname' id='main_obj8' disabled>Reveal Question</button>
+				<button class='autoname' id='main_obj9' disabled>1</button>
+				<button class='autoname' id='main_obj10' disabled>2</button>
+				<button class='autoname' id='main_obj11' disabled>3</button>
+				<button class='autoname' id='main_obj12' disabled>4</button>
+				<button class='autoname' id='main_obj13' disabled style='opacity:0'>Reveal Lifeline Strap</button>
+				<button class='autoname' id='main_obj14' disabled style='opacity:0'>Hide Lifeline Strap</button>
+				<button class='autoname' id='main_obj15' disabled>Lock A</button>
+				<button class='autoname' id='main_obj16' disabled>Lock B</button>
+				<button class='autoname' id='main_obj17' disabled>Lock C</button>
+				<button class='autoname' id='main_obj18' disabled>Lock D</button>
+				<button class='autoname' id='main_obj19' disabled>Undo</button>
+				<button class='autoname' id='main_obj20' disabled>Reveal Correct Answer</button>
+				<button class='autoname' id='main_obj21' disabled>Reveal Money Strap</button>
+				<button class='autoname' id='main_obj22' disabled>Hide Graphics</button>
+				<button class='autoname' id='main_obj23' disabled>Walk Away</button>
+				<button class='autoname' id='main_obj24'>Reveal Winnings</button>
+				<button class='autoname' id='main_obj25' disabled>Hide Winnings</button>
+				<button class='autoname' id='main_obj26' disabled>Goodbye</button>
+				<button class='autoname' id='main_obj27'>Klaxon</button>
+				
+				<div class='lifeline_toggle' id='lt1'>
+					<p class='lifeline_text'>Lifeline 1</p>
+					<button class='lifeline_enable' disabled>✓</p>
+					<button class='lifeline_disable'>✗</p>
+				</div>
+				<div class='lifeline_toggle' id='lt2'>
+					<p class='lifeline_text'>Lifeline 2</p>
+					<button class='lifeline_enable' disabled>✓</p>
+					<button class='lifeline_disable'>✗</p>
+				</div>
+				<div class='lifeline_toggle' id='lt3'>
+					<p class='lifeline_text'>Lifeline 3</p>
+					<button class='lifeline_enable' disabled>✓</p>
+					<button class='lifeline_disable'>✗</p>
+				</div>
+				
+				<div id='lifeline_control'>
+					<div id='lifeline_choose_holder'>
+						<button class='lifeline_choose' id='lc1' disabled>50:50</button>
+						<button class='lifeline_choose' id='lc2' disabled>Ask the Expert</button>
+						<button class='lifeline_choose' id='lc3' disabled>Ask the Host</button>
+					</div>
+					<div id='lifeline_content_holder'>
+						<div id='lc_header'>
+							<p id='lc_title'></p>
+							<button id='lc_empty' disabled>✗</p>
+						</div>
+						<div class='lifeline_content' id='lct1'>
+							<button class='autoname' id='lct1_obj1'>AB</button>
+							<button class='autoname' id='lct1_obj2'>AC</button>
+							<button class='autoname' id='lct1_obj3'>AD</button>
+							<button class='autoname' id='lct1_obj4'>BC</button>
+							<button class='autoname' id='lct1_obj5'>BD</button>
+							<button class='autoname' id='lct1_obj6'>CD</button>
+							<button class='autoname' id='lct1_obj7' disabled>Reset</button>
+						</div>
+						<div class='lifeline_content' id='lct2'>
+							<button class='autoname' id='lct2_obj1'>Waiting</button>
+							<button class='autoname' id='lct2_obj2' disabled>Start</button>
+							<button class='autoname' id='lct2_obj3' disabled>End</button>
+						</div>
+						<div class='lifeline_content' id='lct3'>
+							<button class='autoname' id='lct3_obj1'>Start</button>
+							<button class='autoname' id='lct3_obj2' disabled>End</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class='moneytree'>
+		<p class='title'>Moneytree</p>
+		
+		<button class='autoname' id='load_mt'>Load Moneytree File</button>
+		<input type='file' id='getfilemt' style="display:none" accept=".xls,.xlsx,.ods"></input>
+		
+		<div class='mt_lifeline' id='mt_lifeline_1'>
+			<img id='mtl_icon' src="Images/5050.png"/>
+			<img id='mtl_cross' src="Images/cross.png"/>
+		</div>
+		<div class='mt_lifeline' id='mt_lifeline_2'>
+			<img id='mtl_icon' src="Images/ate.png"/>
+			<img id='mtl_cross' src="Images/cross.png"/>
+		</div>
+		<div class='mt_lifeline' id='mt_lifeline_3'>
+			<img id='mtl_icon' src="Images/ath.png"/>
+			<img id='mtl_cross' src="Images/cross.png"/>
+		</div>
+		
+		<div id='mt_table_holder'>
+			<table id='moneytree_table'>
+			
+			</table>
+		</div>
+
+		<button class='autoname' id='mt_obj1' disabled>Reveal Moneytree</button>
+		<button class='autoname' id='mt_obj2' disabled>Hide Moneytree</button>
+		<button class='autoname' id='mt_obj3' disabled>Up</button>
+		<button class='autoname' id='mt_obj4' disabled>Down</button>
+		<button class='autoname' id='mt_obj5' disabled>Up Auto</button>
+		<button class='autoname' id='mt_obj6' disabled>Reset</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj7' disabled>1</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj8' disabled>2</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj9' disabled>3</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj10' disabled>4</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj11' disabled>5</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj12' disabled>6</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj13' disabled>7</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj14' disabled>8</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj15' disabled>9</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj16' disabled>10</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj17' disabled>11</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj18' disabled>12</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj19' disabled>13</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj20' disabled>14</button>
+		<button class='autoname' name='mt_set_lvl' id='mt_obj21' disabled>15</button>
+	</div>
+	<script>
+		var fff_questions = [];
+		var main_questions = [];
+		var questions_file = '';
+		
+		var moneytree = [];
+		
+		var contestants = [];
+		var cont_result = [];
+		var cont_to_introduce = 0;
+		var cont_win_fff = 0;
+		var cont_playing = 0;
+		
+		var playing_mode = 0;
+		var questions_played = 0;
+		
+		var question = '';
+		var answer_a = '';
+		var answer_b = '';
+		var answer_c = '';
+		var answer_d = '';
+		var note = '';
+		
+		var timer = 0;
+		var timer_int = '';
+		
+		var correct_order_1 = '';
+		var correct_order_2 = '';
+		var correct_order_3 = '';
+		var correct_order_4 = '';
+		var correct_order_full = '';
+		
+		var final_ans = '';
+		var correct_ans = '';
+		
+		var does_anyone_win_fff = false;
+		var walk_away = false;
+		
+		var is_lifeline_1_used = false;
+		var is_lifeline_2_used = false;
+		var is_lifeline_3_used = false;
+	</script>
+</body>

@@ -1,0 +1,609 @@
+@font-face {
+    font-family: 'UTM Copperplate';
+    src: url('../Fonts/UTMCopperplate.woff2') format('woff2'),
+        url('../Fonts/UTMCopperplate.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: "Copperplate Gothic Bold";
+	src: url("../Fonts/CopperplateGothicBold.ttf") format("woff"), url("../Fonts/CopperplateGothicBold.ttf") format("opentype"), url("../Fonts/CopperplateGothicBold.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Copperplate Gothic Std 31 BC";
+	src: url("../Fonts/Copperplate Gothic Std 31 BC.otf") format("woff"), url("../Fonts/Copperplate Gothic Std 31 BC.otf") format("opentype"), url("../Fonts/Copperplate Gothic Std 31 BC.otf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+body {
+	overflow: hidden;
+}
+
+div, img, video {
+	margin:auto;
+	position:absolute;
+}
+
+p {
+	margin:auto;
+	position:absolute;
+	letter-spacing:0px;
+}
+
+table {
+	margin:auto;
+	position:absolute;
+	padding:0px;
+}
+
+@keyframes ani1{
+    0%{
+        transform:scale(0) rotate(60deg);
+    }
+    50%{
+        transform:scale(1) rotate(60deg);
+    }
+    100%{
+        transform:scale(0) rotate(60deg);
+    }
+}
+
+.sparkleAnimate {
+	animation-name: ani1;
+	animation-duration: 1.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes ani2{
+    0%{
+        transform:scale(1) rotateY(0deg);
+    }
+    50%{
+        transform:scale(0.5) rotateY(180deg);
+    }
+    100%{
+        transform:scale(1) rotateY(360deg);
+    }
+}
+
+.lifelineAnimate {
+	animation-name: ani2;
+	animation-duration: 0.75s;
+	animation-timing-function: linear;
+}
+
+@keyframes ani3{
+    0%{
+        transform:rotateX(-90deg);
+    }
+    100%{
+        transform:rotateX(0deg);
+    }
+}
+
+.winningsAnimate1 {
+	animation-name: ani3;
+	animation-duration: 0.25s;
+	animation-timing-function: linear;
+}
+
+@keyframes ani4{
+    0%{
+        transform:rotateX(0deg);
+    }
+    100%{
+        transform:rotateX(-90deg);
+    }
+}
+
+.winningsAnimate2 {
+	animation-name: ani4;
+	animation-duration: 0.25s;
+	animation-timing-function: linear;
+}
+
+.question {
+	width:100vw;
+	height:16.140625vw;
+	top:38.4vw;
+}
+
+.ques_lozenge {
+	width:100vw;
+	height:6.875vw;
+	left:0vw;
+	top:0vw;
+	background: url('../Images/question.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+	opacity:0;
+}
+
+#q_text {
+	top:0.5vw;
+	left:13vw;
+	width:74vw;
+	height:5.3vw;
+	font-size:2.2vw;
+	font-family:'Verdana';
+	line-height:2.7vw;
+	text-align: center;
+	color:white;
+}
+
+.ans_lozenge {
+	width:50vw;
+	height:4.140625vw;
+	opacity:0;
+}
+
+#ans_lozenge_a {
+	top:7.7vw;
+	left:0vw;
+	background: url('../Images/answer_a.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#ans_lozenge_b {
+	top:7.7vw;
+	left:50vw;
+	background: url('../Images/answer_b.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#ans_lozenge_c {
+	top:12vw;
+	left:0vw;
+	background: url('../Images/answer_c.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#ans_lozenge_d {
+	top:12vw;
+	left:50vw;
+	background: url('../Images/answer_d.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.ans_final, .ans_correct {
+	width:100%;
+	height:100%;
+	opacity:0;
+}
+
+.ans_diagonal {
+	width:2.2vw;
+}
+
+#ans_diagonal_a {
+	left:10.6vw;
+	top:1.1vw;
+}
+
+#ans_diagonal_b {
+	left:1vw;
+	top:1.1vw;
+}
+
+#ans_diagonal_c {
+	left:10.6vw;
+	top:1.2vw;
+}
+
+#ans_diagonal_d {
+	left:1vw;
+	top:1.2vw;
+}
+
+.ans_letter, .ans_text {
+	font-size:2.05vw;
+	font-family:'Verdana';
+	text-align:left;
+	transform-origin:left center;
+}
+
+.ans_letter {
+	color:#dea72e;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+	width:2.6vw;
+	height:2.7vw;
+}
+
+#ans_letter_a {
+	left:12.65vw;
+	top:0.72vw;
+}
+
+#ans_letter_b {
+	left:3.15vw;
+	top:0.72vw;
+}
+
+#ans_letter_c {
+	left:12.65vw;
+	top:0.9vw;
+}
+
+#ans_letter_d {
+	left:3.15vw;
+	top:0.9vw;
+}
+
+.ans_text {
+	color:white;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+	width:100vw;
+	height:2.7vw;
+}
+
+#ans_text_a {
+	left:15.25vw;
+	top:0.72vw;
+}
+
+#ans_text_b {
+	left:5.75vw;
+	top:0.72vw;
+}
+
+#ans_text_c {
+	left:15.25vw;
+	top:0.9vw;
+}
+
+#ans_text_d {
+	left:5.75vw;
+	top:0.9vw;
+}
+
+.moneytree {
+	width:33vw;
+	height:100vw;
+	left:110vw;
+	top:0vw;
+}
+
+#tree_seperator {
+	width:0.5vw;
+	height:100vw;
+	top:0vw;
+	left:0vw;
+}
+
+#tree_follower {
+	left:1.2vw;
+	width:25vw;
+	height:3.6vw;
+	top:15.6vw;
+	background: url('../Images/tree_follower.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#tree_sparkle {
+	left:2vw;
+	top:12.15vw;
+	width:10vw;
+	height:10vw;
+	filter: brightness(2);
+}
+
+#moneytree_bg {
+	width:100vw;
+	height:57.5vw;
+	top:0vw;
+	left:0.5vw;
+}
+
+#moneytree_table {
+	width:30vw;
+	height:15vw;
+	left:2.5vw;
+	top:13.25vw;
+	line-height: 2.55vw;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+}
+
+.mt_level_w, .mt_level {
+	/* font-family: "Copperplate Gothic Std 31 BC";
+	font-size:2.6vw; */
+	font-family: "Copperplate Gothic Bold";
+	font-size:2.1vw;
+	width:1vw;
+	text-align:center;
+}
+
+.mt_amount_w, .mt_amount {
+	/* font-family: "Copperplate Gothic Bold";
+	font-size:1.9vw; */
+	font-family: "Copperplate Gothic Std 31 BC";
+	font-size:2.3vw;
+	text-align:left;
+}
+
+.mt_level_w {
+	color:white;
+}
+
+.mt_level {
+	color:#dea72e;
+}
+
+.mt_amount_w {
+	color:white;
+}
+
+.mt_amount {
+	color:#dea72e;
+}
+
+.mt_diagonal {
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:70%;
+	vertical-align:middle;
+	min-width:1.75vw;
+}
+
+.mt_lifeline {
+	width:7.8vw;
+	height:5vw;
+	top:7.2vw;
+}
+
+.mt_lifeline img {
+	height:100%;
+}
+
+#mtl_icon {
+	width:100%;
+}
+
+#mtl_cross {
+	left:1vw;
+	opacity:0;
+}
+
+#mt_lifeline_1 {
+	left:2.2vw;
+}
+
+#mt_lifeline_2 {
+	left:10.1vw;
+}
+
+#mt_lifeline_3 {
+	left:18vw;
+}
+
+.money_strap {
+	width:100vw;
+	height:6.875vw;
+	left:0vw;
+	top:66.2vw;
+	background: url('../Images/money_strap.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#winnings {
+	font-family:'Verdana';
+	font-size:4.5vw;
+	font-weight:bold;
+	text-align:center;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+	color:white;
+	width:74vw;
+	height:4.5vw;
+	top:1vw;
+	left:13vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fff_order {
+	width:38.2vw;
+	height:100vw;
+	left:110vw;
+	top:0vw;
+}
+
+#fff_order_seperator {
+	width:0.5vw;
+	height:100vw;
+	top:0vw;
+	left:2.7vw;
+}
+
+#fff_order_bg {
+	width:100vw;
+	height:57vw;
+	top:0vw;
+	left:0.5vw;
+	margin-left:2.5vw;
+}
+
+#fff_order_q_text {
+	top:8.8vw;
+	left:5vw;
+	width:27vw;
+	height:16vw;
+	font-size:2.9vw;
+	font-family:'Verdana';
+	line-height:3.4vw;
+	color:white;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+}
+
+.fff_order_answer {
+	height:4vw;
+	width:34.8vw;
+	background: url('../Images/fff_order_answer.png') no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+#fff_order_answer_1 {
+	left:48.8vw;
+	top:33.6vw;
+}
+
+#fff_order_answer_2 {
+	left:48.8vw;
+	top:38.8vw;
+}
+
+#fff_order_answer_3 {
+	left:48.8vw;
+	top:44vw;
+}
+
+#fff_order_answer_4 {
+	left:48.8vw;
+	top:49.2vw;
+}
+
+.fff_ans_letter, .fff_ans_text {
+	font-size:2.05vw;
+	font-family:'Verdana';
+	text-align:left;
+	top:0.77vw;
+}
+
+.fff_ans_letter {
+	color:#dea72e;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+	width:2.6vw;
+	height:2.7vw;
+	left:2.1vw;
+}
+
+.fff_ans_text {
+	color:white;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+	width:32.5vw;
+	height:2.7vw;
+	left:5.4vw;
+}
+
+.fff_result {
+	width:100vw;
+	height:100vw;
+	left:0vw;
+	top:0vw;
+	opacity:0;
+}
+
+#fff_result_bg {
+	width:100vw;
+	height:100vw;
+	top:-22.5vw;
+	left:0vw;
+}
+
+.fff_result_lozenge {
+	width:100vw;
+	height:4.145vw;
+	left:0vw;
+	background: url('../Images/fff_order_times.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#fff_result_lozenge_1 {
+	top:14.75vw;
+}
+
+#fff_result_lozenge_2 {
+	top:19.5vw;
+}
+#fff_result_lozenge_3 {
+	top:24.25vw;
+}
+#fff_result_lozenge_4 {
+	top:29vw;
+}
+#fff_result_lozenge_5 {
+	top:33.75vw;
+}
+#fff_result_lozenge_6 {
+	top:38.5vw;
+}
+
+.fff_result_lozenge_correct {
+	width:100vw;
+	height:4.145vw;
+	left:0vw;
+	opacity:0;
+}
+
+.fff_result_name, .fff_result_times {
+	font-size:3.1vw;
+	font-family:'Verdana';
+	text-align:left;
+	top:0.5vw;
+	color:white;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+	height:3.5vw;
+}
+
+.fff_result_name {
+	width:27.5vw;
+	left:28.4vw;
+	text-align:left;
+}
+
+.fff_result_times {
+	width:11vw;
+	left:60.6vw;
+	text-align:right;
+	opacity:0;
+}
+
+.contestant_strap {
+	width:100vw;
+	height:5.5vw;
+	top:47.1vw;
+	text-shadow:0.1vw 0.1vw 0.1vw black;
+	font-family:'Verdana';
+	text-align: center;
+	background: url('../Images/contestants_strap.png') no-repeat;
+	background-position: center;
+	background-size: cover;
+	opacity:0;
+}
+
+#cont_strap_name {
+	font-size:2.6vw;
+	width:44vw;
+	height:2.7vw;
+	left:28vw;
+	top:0.4vw;
+	color:white;
+}
+
+#cont_strap_hometown {
+	font-size:1.9vw;
+	width:44vw;
+	height:2vw;
+	left:28vw;
+	top:3.1vw;
+	color:#dea72e;
+}
+
+
